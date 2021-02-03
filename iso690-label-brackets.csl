@@ -12,7 +12,7 @@
     <category citation-format="label"/>
     <category field="generic-base"/>
     <summary>Multilingual style based on ISO 690. Label style: [alabel], [anotherlabel], etc.</summary>
-    <updated>2021-02-03T13:49:00+01:00</updated>
+    <updated>2021-02-03T15:16:00+01:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <!-- Overrides a few of the terms defined in https://github.com/citation-style-language/locales -->
@@ -207,7 +207,17 @@
     </choose>
   </macro>
   <macro name="edition">
-    <text variable="edition" form="long"/>
+    <group delimiter=" ">
+      <choose>
+        <if is-numeric="edition">
+          <number variable="edition" form="ordinal"/>
+        </if>
+        <else>
+          <text variable="edition"/>
+        </else>
+      </choose>
+      <text term="edition" form="short"/>
+    </group>
   </macro>
   <macro name="publisher-group">
     <group delimiter="&#160;: ">
