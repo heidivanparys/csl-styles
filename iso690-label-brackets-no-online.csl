@@ -12,7 +12,7 @@
     <category citation-format="label"/>
     <category field="generic-base"/>
     <summary>Multilingual style based on ISO 690. Label style: [alabel], [anotherlabel], etc. No "[online]" in entries for resources with a URL (rationale: it is obvious from the URL that the resource is available online).</summary>
-    <updated>2021-02-03T15:17:00+01:00</updated>
+    <updated>2023-01-10T09:41:00+01:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <!-- Overrides a few of the terms defined in https://github.com/citation-style-language/locales -->
@@ -240,7 +240,7 @@
   </macro>
   <macro name="accessed">
     <choose>
-      <if variable="URL DOI" match="any">
+      <if variable="URL" match="any">
         <group prefix=" [" suffix="]">
           <text term="accessed" text-case="capitalize-first"/>
           <date variable="accessed">
@@ -277,23 +277,15 @@
   <macro name="issn">
     <text variable="ISSN" prefix="ISSN&#160;"/>
   </macro>
+  <macro name="doi">
+    <text variable="DOI" prefix="doi:"/>
+  </macro>
   <macro name="url">
-    <choose>
-      <if variable="DOI">
-        <group>
-          <text term="retrieved" suffix=" " text-case="capitalize-first"/>
-          <text term="from" suffix=": "/>
-          <text variable="DOI"/>
-        </group>
-      </if>
-	  <else-if variable="URL">
-        <group>
-          <text term="retrieved" suffix=" " text-case="capitalize-first"/>
-          <text term="from" suffix=": "/>
-          <text variable="URL"/>
-        </group>
-      </else-if>
-    </choose>
+    <group>
+      <text term="retrieved" suffix=" " text-case="capitalize-first"/>
+      <text term="from" suffix=": "/>
+      <text variable="URL"/>
+    </group>
   </macro>
   <macro name="archive">
     <group delimiter=":&#160;">
@@ -351,6 +343,7 @@
             <text macro="accessed" suffix=". "/>
             <text macro="collection" suffix=". "/>
             <text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
             <text macro="url"/>
@@ -365,6 +358,7 @@
             <text macro="issue" suffix=". "/>
 			<text macro="page" suffix=". "/>
 			<text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
             <text macro="accessed" suffix=". "/>
@@ -393,6 +387,7 @@
             <text macro="page" suffix=". "/>
             <text macro="collection" suffix=". "/>
 			<text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
             <text macro="accessed" suffix=". "/>
@@ -422,6 +417,7 @@
             <text macro="accessed" suffix=". "/>
             <text macro="collection" suffix=". "/>
             <text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
             <text macro="url"/>
@@ -435,6 +431,7 @@
             <text macro="publisher-group" suffix=", "/>
             <text macro="date" suffix=". "/>
 			<text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
             <text macro="accessed" suffix=". "/>
@@ -472,6 +469,7 @@
             <text macro="date" suffix=". "/>
             <text macro="collection" suffix=". "/>
 			<text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="accessed" suffix=". "/>
             <text macro="url"/>
@@ -515,6 +513,7 @@
             <text macro="collection" suffix=". "/>
             <text macro="page" suffix=". "/>
             <text macro="isbn" suffix=". "/>
+			<text macro="doi" suffix=". "/>
 			<text macro="issn" suffix=". "/>
 			<text macro="number" suffix=". "/>
 			<text macro="accessed" suffix=". "/>
