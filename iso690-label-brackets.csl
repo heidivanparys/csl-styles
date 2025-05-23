@@ -12,7 +12,7 @@
         <category citation-format="label"/>
         <category field="generic-base"/>
         <summary>Multilingual style based on ISO 690. Label style: [alabel], [anotherlabel], etc.</summary>
-        <updated>2025-05-23T09:32:00+00:00</updated>
+        <updated>2025-05-23T11:34:00+00:00</updated>
         <rights license="https://creativecommons.org/licenses/by-sa/4.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 License</rights>
     </info>
     <!-- Overrides a few of the terms defined in https://github.com/citation-style-language/locales -->
@@ -206,15 +206,8 @@
     <macro name="date">
         <choose>
             <if variable="issued">
-                <date variable="issued">
-                    <date-part name="day" suffix=" "/>
-                    <date-part name="month" suffix=" "/>
-                    <date-part name="year"/>
-                </date>
+                <date variable="issued" form="text" />
             </if>
-            <else-if type="standard">
-                <!-- Standards do not need a date -->
-            </else-if>
             <else>
                 <text term="no date" prefix="[" suffix="]"/>
             </else>
@@ -493,7 +486,7 @@
                         <text macro="url"/>
                     </group>
                 </else-if>
-                <else-if type="report" match="any">
+                <else-if type="report">
                     <group display="right-inline">
                         <text macro="responsability" suffix=". "/>
                         <text macro="title" suffix=". "/>
@@ -509,7 +502,7 @@
                         <text macro="url"/>
                     </group>
                 </else-if>
-                <else-if type="standard" match="any">
+                <else-if type="standard" variable="issued" match="all">
                     <group display="right-inline">
                         <text macro="responsability" suffix=". "/>
                         <text macro="title" suffix=". "/>
@@ -524,7 +517,22 @@
                         <text macro="url"/>
                     </group>
                 </else-if>
-                <else-if type="manuscript" match="any">
+                <else-if type="standard">
+                    <group display="right-inline">
+                        <text macro="responsability" suffix=". "/>
+                        <text macro="title" suffix=". "/>
+                        <text macro="genre" suffix=". "/>
+                        <text macro="edition" suffix=". "/>
+                        <text macro="version" suffix=". "/>
+                        <!-- For e.g. ISO standards: the date is already indicated in the number -->
+                        <text macro="collection" suffix=". "/>
+                        <text macro="isbn" suffix=". "/>
+                        <text macro="issn" suffix=". "/>
+                        <text macro="accessed" suffix=". "/>
+                        <text macro="url"/>
+                    </group>
+                </else-if>
+                <else-if type="manuscript">
                     <group display="right-inline">
                         <text macro="responsability" suffix=". "/>
                         <text macro="title" suffix=". "/>
